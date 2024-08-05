@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ffabf1">
-  <meta name="msapplication-TileColor" content="#ffe0fa">
-  <meta name="theme-color" content="#ffe0fa">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DEZMA1000</title>
@@ -111,12 +104,27 @@
       animation: textclip 5s linear infinite;
       text-decoration: none;
     }
-    audio {
-      display: none; /* Hide the audio player */
+    .enter-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 24px;
+      z-index: 40;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
+  <div class="enter-overlay" onclick="enterSite()">
+    [START]
+  </div>
   <div id="overlay"></div>
   <div id="background-plexus"></div>
   <div id="foreground-plexus"></div>
@@ -128,13 +136,18 @@
     <a href="https://steamcommunity.com/id/dezma1000" target="_blank">STEAM</a>
     <a href="https://backpack.tf/u/76561199035822252" target="_blank">BACKPACK</a>
   </div>
-  <audio id="background-audio" autoplay loop>
+  <audio id="background-audio" loop>
     <source src="https://audio.jukehost.co.uk/8PMM0LkjH4Z2Ru0ESRNtTDZ2L4I5vvEg" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
+    function enterSite() {
+      document.querySelector('.enter-overlay').style.display = 'none';
+      document.getElementById('background-audio').play();
+    }
+
     particlesJS('background-plexus', {
       "particles": {
         "number": {
@@ -342,3 +355,4 @@
   </script>
 </body>
 </html>
+
