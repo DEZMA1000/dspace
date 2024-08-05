@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plexus Background with Music and Text</title>
+  <style>
+    @font-face {
+      font-family: "ubuntu";
+      font-style: italic;
+      font-weight: 300;
+      src: local("Lato Light Italic"), local("Lato-LightItalic"),
+        url(https://fonts.gstatic.com/s/ubuntucondensed/v8/u-4k0rCzjgs5J7oXnJcM_0kACGMtT-Dfqw.woff2) format("woff2");
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      background: linear-gradient(to bottom, #444896, #150633 50%, #000000 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: "ubuntu", Arial, sans-serif;
+    }
+    #background-plexus, #foreground-plexus {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    #background-plexus {
+      filter: blur(10px) brightness(0.5);
+    }
+    #foreground-plexus {
+      pointer-events: none;
+    }
+    .video-background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: -9999px; /* Move the iframe off-screen */
+      left: -9999px; /* Move the iframe off-screen */
+    }
+    #overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      z-index: 10;
+      animation: fadeOut 10s forwards; /* Adjust duration as needed */
+    }
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+    .wrapper {
+      text-align: center;
+      position: relative;
+      z-index: 20; /* Ensure text is above other elements */
+    }
+    .wrapper h1 {
+      color: #fff;
+      font-size: 100px;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-style: italic;
+      font-family: "Josefin Sans", sans-serif;
+      background: linear-gradient(to right, #70a6ff 10%, #a126ff 50%, #f45eff 90%);
+      background-size: 200% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textclip 5s linear infinite;
+      display: inline-block;
+    }
+    @keyframes textclip {
+      to {
+        background-position: 200% center;
+      }
+    }
+    .links {
+      width: 100%;
+      position: absolute;
+      bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-sizing: border-box;
+      z-index: 30; /* Ensure links are above other elements */
+    }
+    .links a {
+      color: #fff;
+      font-size: 18px;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-style: italic;
+      font-family: "Josefin Sans", sans-serif;
+      background: linear-gradient(to right, #70a6ff 10%, #a126ff 50%, #f45eff 90%);
+      background-size: 200% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textclip 5s linear infinite;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="overlay"></div>
+  <div class="video-background">
+    <iframe src="https://www.youtube.com/embed/vb06iVf0Cps?autoplay=1&controls=0&loop=1&playlist=vb06iVf0Cps" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+  <div id="background-plexus"></div>
+  <div id="foreground-plexus"></div>
+  <div class="wrapper">
+    <h1>DEZMA1000</h1>
+  </div>
+  <div class="links">
+    <a href="https://www.youtube.com/channel/UClQ_YpaMOUdnG6ZIgsVGcHw" target="_blank">YOUTUBE</a>
+    <a href="https://steamcommunity.com/id/dezma1000" target="_blank">STEAM</a>
+    <a href="https://backpack.tf/u/76561199035822252" target="_blank">BACKPACK</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS('background-plexus', {
+      "particles": {
+        "number": {
+          "value": 50,
+          "density": {
+            "enable": true,
+            "value_area": 1000
+          }
+        },
+        "color": {
+          "value": "#6bb0ff"  // More aquatic blue color
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          },
+          "image": {
+            "src": "img/github.svg",
+            "width": 100,
+            "height": 100
+          }
+        },
+        "opacity": {
+          "value": 0.8,  // Increased opacity
+          "random": false,
+          "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 10,
+          "random": true,
+          "anim": {
+            "enable": false,
+            "speed": 40,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 200,
+          "color": "#6bb0ff",  // More aquatic blue color
+          "opacity": 0.8,  // Increased opacity
+          "width": 2
+        },
+        "move": {
+          "enable": true,
+          "speed": 7,  // Increased speed
+          "direction": "top",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": false,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": false
+          },
+          "onclick": {
+            "enable": false
+          },
+          "resize": true
+        }
+      },
+      "retina_detect": true
+    });
+
+    particlesJS('foreground-plexus', {
+      "particles": {
+        "number": {
+          "value": 100,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#ffffff"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          },
+          "image": {
+            "src": "img/github.svg",
+            "width": 100,
+            "height": 100
+          }
+        },
+        "opacity": {
+          "value": 0.8,
+          "random": false,
+          "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 5,
+          "random": true,
+          "anim": {
+            "enable": false,
+            "speed": 40,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.4,
+          "width": 2
+        },
+        "move": {
+          "enable": true,
+          "speed": 5,
+          "direction": "top",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": false,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 140,
+            "line_linked": {
+              "opacity": 1
+            }
+          },
+          "bubble": {
+            "distance": 400,
+            "size": 40,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+          },
+          "repulse": {
+            "distance": 200,
+            "duration": 0.4
+          },
+          "push": {
+            "particles_nb": 4
+          },
+          "remove": {
+            "particles_nb": 2
+          }
+        }
+      },
+      "retina_detect": true
+    });
+
+    // Adding glow effect
+    const foregroundContainer = document.getElementById('foreground-plexus');
+    const style = document.createElement('style');
+    style.textContent = `
+      #foreground-plexus canvas {
+        filter: drop-shadow(0 0 10px #00f) drop-shadow(0 0 20px #f0f);
+      }
+    `;
+    document.head.append(style);
+  </script>
+</body>
+</html>
