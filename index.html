@@ -44,7 +44,10 @@
       height: 100%;
       background: black;
       z-index: 10;
-      animation: fadeOut 10s forwards; /* Adjust duration as needed */
+      display: none;
+    }
+    .fade-out {
+      animation: fadeOut 10s forwards;
     }
     @keyframes fadeOut {
       from {
@@ -119,13 +122,24 @@
       z-index: 40;
       cursor: pointer;
     }
+    .enter-overlay span {
+      animation: glow 1.5s infinite;
+    }
+    @keyframes glow {
+      0%, 100% {
+        text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px white, 0 0 25px white, 0 0 30px white, 0 0 35px white;
+      }
+      50% {
+        text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px white, 0 0 50px white, 0 0 60px white, 0 0 70px white;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="enter-overlay" onclick="enterSite()">
-    [START]
+    <span>[START]</span>
   </div>
-  <div id="overlay"></div>
+  <div id="overlay" class="fade-out"></div>
   <div id="background-plexus"></div>
   <div id="foreground-plexus"></div>
   <div class="wrapper">
@@ -145,6 +159,8 @@
   <script>
     function enterSite() {
       document.querySelector('.enter-overlay').style.display = 'none';
+      const overlay = document.getElementById('overlay');
+      overlay.style.display = 'block';
       document.getElementById('background-audio').play();
     }
 
@@ -355,4 +371,3 @@
   </script>
 </body>
 </html>
-
