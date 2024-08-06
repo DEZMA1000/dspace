@@ -60,7 +60,7 @@
     .wrapper {
       text-align: center;
       position: relative;
-      z-index: 20; /* Ensure text is above other elements */
+      z-index: 20; 
     }
     .wrapper h1 {
       color: #fff;
@@ -90,7 +90,7 @@
       justify-content: space-between;
       padding: 0 20px;
       box-sizing: border-box;
-      z-index: 30; /* Ensure links are above other elements */
+      z-index: 30; 
     }
     .links a {
       color: #fff;
@@ -152,7 +152,6 @@
   </div>
   <audio id="background-audio" loop>
     <source src="https://audio.jukehost.co.uk/8PMM0LkjH4Z2Ru0ESRNtTDZ2L4I5vvEg" type="audio/mp3">
-    Your browser does not support the audio element.
   </audio>
 
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -164,7 +163,7 @@
       document.getElementById('background-audio').play();
     }
 
-    particlesJS('background-plexus', {
+    particlesJS('background-plexus', {   //-----------------------------background plexus start/
       "particles": {
         "number": {
           "value": 50,
@@ -174,7 +173,7 @@
           }
         },
         "color": {
-          "value": "#6bb0ff"  // More aquatic blue color
+          "value": "#6bb0ff"
         },
         "shape": {
           "type": "circle",
@@ -192,7 +191,7 @@
           }
         },
         "opacity": {
-          "value": 0.8,  // Increased opacity
+          "value": 0.8,
           "random": false,
           "anim": {
             "enable": false,
@@ -214,13 +213,13 @@
         "line_linked": {
           "enable": true,
           "distance": 200,
-          "color": "#6bb0ff",  // More aquatic blue color
-          "opacity": 0.8,  // Increased opacity
+          "color": "#6bb0ff",
+          "opacity": 0.8,
           "width": 2
         },
         "move": {
           "enable": true,
-          "speed": 7,  // Increased speed
+          "speed": 7,
           "direction": "top",
           "random": false,
           "straight": false,
@@ -246,9 +245,9 @@
         }
       },
       "retina_detect": true
-    });
+    });                                    //-----------------------------background plexus end/
 
-    particlesJS('foreground-plexus', {
+    particlesJS('foreground-plexus', {   //-----------------------------foreground plexus start/
       "particles": {
         "number": {
           "value": 100,
@@ -357,10 +356,8 @@
         }
       },
       "retina_detect": true
-    });
-
-    // Adding glow effect
-    const foregroundContainer = document.getElementById('foreground-plexus');
+    });                               //-----------------------------foreground plexus end/
+    const foregroundContainer = document.getElementById('foreground-plexus');    //i forgot to make it glow :P
     const style = document.createElement('style');
     style.textContent = `
       #foreground-plexus canvas {
